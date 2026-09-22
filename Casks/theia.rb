@@ -24,13 +24,6 @@ cask "theia" do
 
   app "theia.app"
 
-  # Remove quarantine attribute so Gatekeeper doesn't block unsigned builds
-  postflight_steps do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/theia.app"],
-                   sudo: false
-  end
-
   uninstall quit: "com.theia.ssh"
   zap trash: [
     "~/Library/Application Support/com.theia.ssh",
